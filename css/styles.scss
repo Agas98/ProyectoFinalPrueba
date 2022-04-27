@@ -1,0 +1,202 @@
+$negro:#000;
+$fondo: #AC8887;
+$texto: #B83700;
+$borde: #8fdc97;
+$fondo-boton: #00A34C;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    height: 200px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+
+    .form {
+        background-color: $fondo;
+        border: 2px solid $borde;
+        border-radius: 30px;
+        width: 650px;
+        font-size: 22px;
+        padding: 20px;
+        height: 400px;
+        color: $texto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 10px;
+
+        input {
+            font-size: 24px;
+            color: #000;
+            font-weight: 600;
+        }
+
+        #submit-datos {
+            margin-top: 10px;
+            border-radius: 20px;
+            font-size: 26px;
+            font-weight: 600;
+            background-color: $fondo-boton;
+            color: $texto;
+            transition: all 0.4s ease-out;
+            &:hover {
+                cursor: pointer;
+                background-color: $fondo;
+                color: $texto;
+            }
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: flex-start;
+
+        .botonera {
+            margin-top: 50px;
+
+            #boton-promedio {
+                font-size: 16px;
+                color: $texto;
+                border-radius: 5px;
+                text-transform: uppercase;
+                font-weight: 600;
+                background-color: $fondo-boton;
+                padding: 10px;
+                transition: all 0.4s ease-out;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $fondo;
+                    color: $texto;
+                }
+            }
+
+        }
+
+        .pts {
+            margin-top: 10px;
+            font-size: 30px;
+
+            #puntaje {
+                color: $texto;
+                font-weight: 700;
+            }
+        }
+
+        .card {
+            height: 320px;
+            width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid $borde;
+            border-radius: 20px;
+            background-color: $fondo;
+            margin: 8px;
+
+            .card__img {
+                width: 100%;
+                height: 45%;
+                background-image: url("../img/fms.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin-bottom: 10px;
+            }
+
+            .nombre {
+                width: 100%;
+                height: 20%;
+                font-size: 30px;
+                font-weight: bold;
+                color: $texto;
+                margin: auto;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .separador-horizontal {
+                height: 1px;
+                width: 92%;
+                background-color: white;
+            }
+
+            .card__data {
+                width: 100%;
+                height: 40%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                .separador-vertical {
+                    width: 2px;
+                    background-color: white;
+                    height: 90%;
+                }
+
+                .card__data--left {
+                    width: 50%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    .atributos {
+                        width: 100%;
+                        padding-left: 30px;
+                        font-size: 20px;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        color: $texto;
+
+                        .style {
+                            color: $texto;
+                            font-size: 23px;
+                        }
+                    }
+                }
+
+                .card__data--right {
+                    width: 50%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    .atributos {
+                        width: 100%;
+                        padding-left: 30px;
+                        font-size: 20px;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        color: $texto;
+
+                        .style {
+                            color: $texto;
+                            font-size: 23px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
