@@ -1,12 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-header {
-  width: 100%;
-  height: 200px;
+  font-family: "Roboto Mono", monospace;
 }
 
 section {
@@ -15,7 +12,7 @@ section {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 400px;
+  height: auto;
 }
 section .form {
   background-color: #AC8887;
@@ -54,7 +51,7 @@ section .container {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
 }
 section .container .botonera {
   margin-top: 50px;
@@ -73,14 +70,6 @@ section .container .botonera #boton-promedio:hover {
   cursor: pointer;
   background-color: #AC8887;
   color: #B83700;
-}
-section .container .pts {
-  margin-top: 10px;
-  font-size: 30px;
-}
-section .container .pts #puntaje {
-  color: #B83700;
-  font-weight: 700;
 }
 section .container .card {
   height: 320px;
@@ -108,7 +97,7 @@ section .container .card .nombre {
   height: 20%;
   font-size: 30px;
   font-weight: bold;
-  color: #B83700;
+  color: black;
   margin: auto;
   text-align: center;
   text-transform: uppercase;
@@ -144,12 +133,13 @@ section .container .card .card__data .card__data--left .atributos {
   padding-left: 30px;
   font-size: 20px;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
   color: #B83700;
 }
 section .container .card .card__data .card__data--left .atributos .style {
   color: #B83700;
   font-size: 23px;
+  font-weight: bold;
 }
 section .container .card .card__data .card__data--right {
   width: 50%;
@@ -164,10 +154,11 @@ section .container .card .card__data .card__data--right .atributos {
   padding-left: 30px;
   font-size: 20px;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
   color: #B83700;
 }
 section .container .card .card__data .card__data--right .atributos .style {
   color: #B83700;
   font-size: 23px;
+  font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */

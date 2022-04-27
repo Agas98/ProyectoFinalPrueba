@@ -1,9 +1,9 @@
-const raperos = [];
+let raperos = [];
 
 const min = 60;
 const max = 100;
 
-let errorDatos, errorFlow, errorIngenio, errorEstilo, errorRespuesta, errorPunchline, errorAgresividad;
+let errorDatos, errorFlow, errorIngenio, errorEstilo, errorRespuesta, errorPunchline, errorAgresividad, rapero;
 
 class Rapero {
 
@@ -19,8 +19,64 @@ class Rapero {
     }
 }
 
-let botonSubmit = document.querySelector("#submit-datos");
+function modificarDOM() {
+    let contenido_card = document.createElement('div');
+    contenido_card.classList.add("contenido_card");
+    contenido_card.innerHTML =
+        `
+        <div class="card">
+                    <div class="nombre">
+                        <label for="" class="nombre">${rapero.nombre}</label>
+                    </div>
+                    <div class="card__img">
+    
+                    </div>
+                    <div class="separador-horizontal"></div>
+                    <div class="card__data">
+                        <div class="card__data--left">
+                            <div class="atributos">
+                                <label class="style flow">${rapero.flow}</label>
+                                <label>FLO</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style estilo">${rapero.estilo}</label>
+                                <label>EST</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style ingenio">${rapero.ingenio}</label>
+                                <label>ING</label>
+                            </div>
+                        </div>
+                        <div class="separador-vertical"></div>
+                        <div class="card__data--right">
+                            <div class="atributos">
+                                <label class="style respuesta">${rapero.respuesta}</label>
+                                <label>RES</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style punchline">${rapero.punchline}</label>
+                                <label>PUN</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style agresividad">${rapero.agresividad}</label>
+                                <label>AGR</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `;
 
+    let contenedor = document.querySelector(".container");
+    contenedor.appendChild(contenido_card);
+}
+
+function almacenarDatosJSON() {
+    json_rapero = JSON.stringify(raperos);
+    localStorage.setItem("raperosJSON", json_rapero);
+}
+
+
+let botonSubmit = document.querySelector("#submit-datos");
 botonSubmit.onclick = () => {
 
     let nombreIngresado = document.querySelector("#nombreIngresado").value;
@@ -108,7 +164,7 @@ botonSubmit.onclick = () => {
         errorDatos = true;
     }
 
-    let rapero = new Rapero(nombreIngresado, flowIngresado, estiloIngresado, ingenioIngresado, respuestaIngresado, punchlineIngresado, agresividadIngresado, promedioIngresado);
+    rapero = new Rapero(nombreIngresado, flowIngresado, estiloIngresado, ingenioIngresado, respuestaIngresado, punchlineIngresado, agresividadIngresado, promedioIngresado);
 
     if (errorDatos == false) {
         Swal.fire({
@@ -126,17 +182,31 @@ botonSubmit.onclick = () => {
         document.querySelector("#agresividadIngresado").value = "";
 
         /* ALMACENAMIENTO LOCAL */
-        json_rapero = JSON.stringify(raperos);
-        localStorage.setItem("raperos", json_rapero);
+        almacenarDatosJSON();
 
         /* MODIFICACION DOM */
-        let contenido_card = document.createElement('div');
-        contenido_card.classList.add("contenido_card");
-        contenido_card.innerHTML =
-            `
+        modificarDOM();
+
+    }
+}
+
+let botonMostrar = document.querySelector("#mostrarRaperos");
+botonMostrar.onclick = () => {
+    raperos = JSON.parse(localStorage.getItem("raperosJSON"));
+
+    for (let i = 0; i < raperos.length; i++) {
+        mostrarRaperos(raperos[i].nombre, raperos[i].flow, raperos[i].estilo, raperos[i].ingenio, raperos[i].respuesta, raperos[i].punchline, raperos[i].agresividad, );
+    }
+}
+
+function mostrarRaperos(nombre, flow, estilo, ingenio, respuesta, punchline, agresividad) {
+    let contenido_card = document.createElement('div');
+    contenido_card.classList.add("contenido_card");
+    contenido_card.innerHTML =
+        `
         <div class="card">
                     <div class="nombre">
-                        <label for="" class="nombre"></label>
+                        <label for="" class="nombre">${nombre}</label>
                     </div>
                     <div class="card__img">
     
@@ -145,30 +215,30 @@ botonSubmit.onclick = () => {
                     <div class="card__data">
                         <div class="card__data--left">
                             <div class="atributos">
-                                <label class="style flow"></label>
+                                <label class="style flow">${flow}</label>
                                 <label>FLO</label>
                             </div>
                             <div class="atributos">
-                                <label class="style estilo"></label>
+                                <label class="style estilo">${estilo}</label>
                                 <label>EST</label>
                             </div>
                             <div class="atributos">
-                                <label class="style ingenio"></label>
+                                <label class="style ingenio">${ingenio}</label>
                                 <label>ING</label>
                             </div>
                         </div>
                         <div class="separador-vertical"></div>
                         <div class="card__data--right">
                             <div class="atributos">
-                                <label class="style respuesta"></label>
+                                <label class="style respuesta">${respuesta}</label>
                                 <label>RES</label>
                             </div>
                             <div class="atributos">
-                                <label class="style punchline"></label>
+                                <label class="style punchline">${punchline}</label>
                                 <label>PUN</label>
                             </div>
                             <div class="atributos">
-                                <label class="style agresividad"></label>
+                                <label class="style agresividad">${agresividad}</label>
                                 <label>AGR</label>
                             </div>
                         </div>
@@ -176,11 +246,6 @@ botonSubmit.onclick = () => {
                 </div>
         `;
 
-        let contenedor = document.querySelector(".container");
-        contenedor.appendChild(contenido_card);
-
-        let nombreRapero = document.querySelector('.nombre');
-        nombreRapero.innerText = nombreIngresado;
-
-    }
+    let contenedor = document.querySelector(".container");
+    contenedor.appendChild(contenido_card);
 }
