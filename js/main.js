@@ -1,4 +1,11 @@
 let raperos = [];
+let raperosJSON = JSON.parse(localStorage.getItem('listaRaperos'));
+let k = 0;
+if (raperosJSON) {
+    raperos = raperosJSON;
+    k = 1;
+}
+
 
 const min = 60;
 const max = 100;
@@ -21,7 +28,7 @@ class Rapero {
 
 function modificarDOM() {
     let contenido_card = document.createElement('div');
-    contenido_card.classList.add("contenido_card");
+    contenido_card.classList.add(`contenido_card${raperos.length}`);
     contenido_card.innerHTML =
         `
         <div class="card">
@@ -64,6 +71,7 @@ function modificarDOM() {
                         </div>
                     </div>
                 </div>
+                <input type="button" class="botonEliminar" id="eliminarRapero${raperos.length}" value="Eliminar">
         `;
 
     let contenedor = document.querySelector(".container");
@@ -71,8 +79,62 @@ function modificarDOM() {
 }
 
 function almacenarDatosJSON() {
-    json_rapero = JSON.stringify(raperos);
-    localStorage.setItem("raperosJSON", json_rapero);
+    let listaRaperos = JSON.stringify(raperos);
+    localStorage.setItem("listaRaperos", listaRaperos);
+}
+
+function mostrarRaperos(id, nombre, flow, estilo, ingenio, respuesta, punchline, agresividad) {
+    let contenido_card = document.createElement('div');
+    contenido_card.classList.add(`contenido_card${id}`);
+    contenido_card.innerHTML =
+        `
+        <div class="card">
+                    <div class="nombre">
+                        <label for="" class="nombre">${nombre}</label>
+                    </div>
+                    <div class="card__img">
+    
+                    </div>
+                    <div class="separador-horizontal"></div>
+                    <div class="card__data">
+                        <div class="card__data--left">
+                            <div class="atributos">
+                                <label class="style flow">${flow}</label>
+                                <label>FLO</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style estilo">${estilo}</label>
+                                <label>EST</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style ingenio">${ingenio}</label>
+                                <label>ING</label>
+                            </div>
+                        </div>
+                        <div class="separador-vertical"></div>
+                        <div class="card__data--right">
+                            <div class="atributos">
+                                <label class="style respuesta">${respuesta}</label>
+                                <label>RES</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style punchline">${punchline}</label>
+                                <label>PUN</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style agresividad">${agresividad}</label>
+                                <label>AGR</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `;
+
+    let contenedor = document.querySelector(".container");
+    contenedor.appendChild(contenido_card);
+}
+
+function mejoresPromedios() {
 }
 
 
@@ -192,60 +254,22 @@ botonSubmit.onclick = () => {
 
 let botonMostrar = document.querySelector("#mostrarRaperos");
 botonMostrar.onclick = () => {
-    raperos = JSON.parse(localStorage.getItem("raperosJSON"));
-
-    for (let i = 0; i < raperos.length; i++) {
-        mostrarRaperos(raperos[i].nombre, raperos[i].flow, raperos[i].estilo, raperos[i].ingenio, raperos[i].respuesta, raperos[i].punchline, raperos[i].agresividad, );
+    if (k == 1) {
+        for (let i = 0; i < raperos.length; i++) {
+            mostrarRaperos(i, raperos[i].nombre, raperos[i].flow, raperos[i].estilo, raperos[i].ingenio, raperos[i].respuesta, raperos[i].punchline, raperos[i].agresividad, );
+        }
+        k = 0;
     }
 }
 
-function mostrarRaperos(nombre, flow, estilo, ingenio, respuesta, punchline, agresividad) {
-    let contenido_card = document.createElement('div');
-    contenido_card.classList.add("contenido_card");
-    contenido_card.innerHTML =
-        `
-        <div class="card">
-                    <div class="nombre">
-                        <label for="" class="nombre">${nombre}</label>
-                    </div>
-                    <div class="card__img">
-    
-                    </div>
-                    <div class="separador-horizontal"></div>
-                    <div class="card__data">
-                        <div class="card__data--left">
-                            <div class="atributos">
-                                <label class="style flow">${flow}</label>
-                                <label>FLO</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style estilo">${estilo}</label>
-                                <label>EST</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style ingenio">${ingenio}</label>
-                                <label>ING</label>
-                            </div>
-                        </div>
-                        <div class="separador-vertical"></div>
-                        <div class="card__data--right">
-                            <div class="atributos">
-                                <label class="style respuesta">${respuesta}</label>
-                                <label>RES</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style punchline">${punchline}</label>
-                                <label>PUN</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style agresividad">${agresividad}</label>
-                                <label>AGR</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        `;
+let botonEliminar = document.querySelector("#botonEliminar");
+botonEliminar.onclick = () => {
 
-    let contenedor = document.querySelector(".container");
-    contenedor.appendChild(contenido_card);
+    let btnEliminar = document.createElement('input');
+    btnEliminar.setAttribute('class','botonEliminar');
+    btnEliminar.setAttribute('id',`eliminarRapero${raperos.length}`);
+    btnEliminar.setAttribute('value','Eliminar');
+    btnEliminar.setAttribute('type','button');
+    document.body.appendChild(btnEliminar);
+
 }
