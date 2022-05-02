@@ -1,20 +1,20 @@
 let raperos = [];
+let raperos_cargados = [];
 let raperosJSON = JSON.parse(localStorage.getItem('listaRaperos'));
-let k = 0;
+let k = 0; // VARIABLE PARA NO REPETIR EL "MOSTRAR RAPEROS"
 if (raperosJSON) {
     raperos = raperosJSON;
     k = 1;
 }
 
-
-const min = 60;
+const min = 60; // VALORES MINIMOS Y MAXIMOS DE INGRESO DE DATOS
 const max = 100;
 
 let errorDatos, errorFlow, errorIngenio, errorEstilo, errorRespuesta, errorPunchline, errorAgresividad, rapero;
 
 class Rapero {
 
-    constructor(nombre, flow, estilo, ingenio, respuesta, punchline, agresividad, promedio) {
+    constructor(nombre, flow, estilo, ingenio, respuesta, punchline, agresividad, promedio, imagen) {
         this.nombre = nombre;
         this.flow = flow;
         this.estilo = estilo;
@@ -23,6 +23,7 @@ class Rapero {
         this.punchline = punchline;
         this.agresividad = agresividad;
         this.promedio = promedio;
+        this.imagen = imagen;
     }
 }
 
@@ -70,8 +71,10 @@ function modificarDOM() {
                             </div>
                         </div>
                     </div>
-                </div>
-                <input type="button" class="botonEliminar" id="eliminarRapero${raperos.length}" value="Eliminar">
+            </div>
+                        </div>
+                        <div class="eliminar${raperos.length}">
+                        </div>
         `;
 
     let contenedor = document.querySelector(".container");
@@ -127,14 +130,13 @@ function mostrarRaperos(id, nombre, flow, estilo, ingenio, respuesta, punchline,
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>
+                    <div class="eliminar${id}">
+                    </div>
         `;
 
     let contenedor = document.querySelector(".container");
     contenedor.appendChild(contenido_card);
-}
-
-function mejoresPromedios() {
 }
 
 
@@ -254,6 +256,7 @@ botonSubmit.onclick = () => {
 
 let botonMostrar = document.querySelector("#mostrarRaperos");
 botonMostrar.onclick = () => {
+
     if (k == 1) {
         for (let i = 0; i < raperos.length; i++) {
             mostrarRaperos(i, raperos[i].nombre, raperos[i].flow, raperos[i].estilo, raperos[i].ingenio, raperos[i].respuesta, raperos[i].punchline, raperos[i].agresividad, );
@@ -264,12 +267,30 @@ botonMostrar.onclick = () => {
 
 let botonEliminar = document.querySelector("#botonEliminar");
 botonEliminar.onclick = () => {
+    if (raperos.length != 0 || raperos_cargados.length != 0) {
+        for (let l = 0; l < raperos.length; l++) {
+            let btnEliminar = document.querySelector(`.eliminar${l}`);
+            btnEliminar.innerHTML = `<input type="button" class="botonEliminar" id="eliminarRapero${l}" value="Eliminar">`
+        }
+        for (let l = 0; l < raperos_cargados.length; l++) {
+            let btnEliminar = document.querySelector(`.eliminar${l}`);
+            btnEliminar.innerHTML = `<input type="button" class="botonEliminar" id="eliminarRapero${l}" value="Eliminar">`
+        }
+    }
+}
 
-    let btnEliminar = document.createElement('input');
-    btnEliminar.setAttribute('class','botonEliminar');
-    btnEliminar.setAttribute('id',`eliminarRapero${raperos.length}`);
-    btnEliminar.setAttribute('value','Eliminar');
-    btnEliminar.setAttribute('type','button');
-    document.body.appendChild(btnEliminar);
+let botonMostrarRaperosViejos = document.querySelector("#mostrarRaperosViejos");
+botonMostrarRaperosViejos.onclick = () => {
 
+    fetch('../info/raperos.JSON')
+        .then((response) => response.json())
+        .then((api) => {
+            raperos_cargados = api;
+            if (k == 1) {
+                for (let i = 0; i < raperos_cargados.length; i++) {
+                    mostrarRaperos(i, raperos_cargados[i].nombre, raperos_cargados[i].flow, raperos_cargados[i].estilo, raperos_cargados[i].ingenio, raperos_cargados[i].respuesta, raperos_cargados[i].punchline, raperos_cargados[i].agresividad, );
+                }
+                k = 0;
+            }
+        })
 }

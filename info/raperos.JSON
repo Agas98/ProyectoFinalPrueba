@@ -1,0 +1,156 @@
+[
+    {
+        "nombre": "ACZINO",
+        "flow": 90,
+        "estilo": 89,
+        "ingenio": 95,
+        "respuesta": 94,
+        "punchline": 95,
+        "agresividad": 92,
+        "promedio": 92.5,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "CHUTY",
+        "flow": 94,
+        "estilo": 90,
+        "ingenio": 96,
+        "respuesta": 95,
+        "punchline": 96,
+        "agresividad": 93,
+        "promedio": 94,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "PAPO MC",
+        "flow": 93,
+        "estilo": 90,
+        "ingenio": 93,
+        "respuesta": 92,
+        "punchline": 93,
+        "agresividad": 92,
+        "promedio": 92.17,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "NEKROOS",
+        "flow": 87,
+        "estilo": 87,
+        "ingenio": 91,
+        "respuesta": 91,
+        "punchline": 93,
+        "agresividad": 92,
+        "promedio": 90.17,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "MECHA",
+        "flow": 89,
+        "estilo": 91,
+        "ingenio": 97,
+        "respuesta": 97,
+        "punchline": 96,
+        "agresividad": 98,
+        "promedio": 94.67,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "SWEET PAIN",
+        "flow": 88,
+        "estilo": 96,
+        "ingenio": 97,
+        "respuesta": 96,
+        "punchline": 96,
+        "agresividad": 96,
+        "promedio": 94.83,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "MARITHEA",
+        "flow": 86,
+        "estilo": 89,
+        "ingenio": 98,
+        "respuesta": 97,
+        "punchline": 97,
+        "agresividad": 95,
+        "promedio": 93.67,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "SKONE",
+        "flow": 87,
+        "estilo": 88,
+        "ingenio": 98,
+        "respuesta": 98,
+        "punchline": 98,
+        "agresividad": 97,
+        "promedio": 94.33,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "GAZIR",
+        "flow": 92,
+        "estilo": 95,
+        "ingenio": 99,
+        "respuesta": 99,
+        "punchline": 99,
+        "agresividad": 97,
+        "promedio": 96.83,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "KATRA",
+        "flow": 86,
+        "estilo": 85,
+        "ingenio": 87,
+        "respuesta": 88,
+        "punchline": 88,
+        "agresividad": 88,
+        "promedio": 87,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "JOKKER",
+        "flow": 85,
+        "estilo": 84,
+        "ingenio": 88,
+        "respuesta": 88,
+        "punchline": 88,
+        "agresividad": 87,
+        "promedio": 86.67,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "WOLF",
+        "flow": 84,
+        "estilo": 83,
+        "ingenio": 85,
+        "respuesta": 87,
+        "punchline": 87,
+        "agresividad": 88,
+        "promedio": 85.67,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "DTOKE",
+        "flow": 85,
+        "estilo": 87,
+        "ingenio": 95,
+        "respuesta": 96,
+        "punchline": 98,
+        "agresividad": 99,
+        "promedio": 93.33,
+        "img": "../img/aczino.png"
+    },
+    {
+        "nombre": "RAPDER",
+        "flow": 88,
+        "estilo": 90,
+        "ingenio": 95,
+        "respuesta": 94,
+        "punchline": 96,
+        "agresividad": 93,
+        "promedio": 92.66,
+        "img": "../img/aczino.png"
+    }
+]
