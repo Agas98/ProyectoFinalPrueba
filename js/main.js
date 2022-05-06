@@ -1,7 +1,7 @@
 let raperos = [];
 let raperos_cargados = [];
 let raperosJSON = JSON.parse(localStorage.getItem('listaRaperos'));
-let k = 0; // VARIABLE PARA NO REPETIR EL "MOSTRAR RAPEROS"
+let k = 1; // VARIABLE PARA NO REPETIR EL "MOSTRAR RAPEROS"
 if (raperosJSON) {
     raperos = raperosJSON;
     k = 1;
@@ -11,10 +11,12 @@ const min = 60; // VALORES MINIMOS Y MAXIMOS DE INGRESO DE DATOS
 const max = 100;
 
 let errorDatos, errorFlow, errorIngenio, errorEstilo, errorRespuesta, errorPunchline, errorAgresividad, rapero;
+let bandera;
+let mostrado = false;
 
 class Rapero {
 
-    constructor(nombre, flow, estilo, ingenio, respuesta, punchline, agresividad, promedio, imagen) {
+    constructor(nombre, flow, estilo, ingenio, respuesta, punchline, agresividad, promedio, pais) {
         this.nombre = nombre;
         this.flow = flow;
         this.estilo = estilo;
@@ -23,11 +25,25 @@ class Rapero {
         this.punchline = punchline;
         this.agresividad = agresividad;
         this.promedio = promedio;
-        this.imagen = imagen;
+        this.pais = pais;
     }
 }
 
-function modificarDOM() {
+function modificarDOM(pais) {
+    console.log(pais);
+    if (pais == "arg") {
+        bandera = "url(../img/argentina.png)";
+    } else if (pais == "chi") {
+        bandera = "url(../img/chile.png)";
+    } else if (pais == "col") {
+        bandera = "url(../img/colombia.png)";
+    } else if (pais == "esp") {
+        bandera = "url(../img/espana.png)";
+    } else if (pais == "mex") {
+        bandera = "url(../img/mexico.png)";
+    } else if (pais == "per") {
+        bandera = "url(../img/peru.png)";
+    }
     let contenido_card = document.createElement('div');
     contenido_card.classList.add(`contenido_card${raperos.length}`);
     contenido_card.innerHTML =
@@ -36,8 +52,11 @@ function modificarDOM() {
                     <div class="nombre">
                         <label for="" class="nombre">${rapero.nombre}</label>
                     </div>
-                    <div class="card__img">
-    
+                    <div class="card__info">
+                    <div class="card__img imagen${raperos.length}">
+                    </div>
+                    <div class="nacionalidad${raperos.length} nacionalidad">
+                    </div>
                     </div>
                     <div class="separador-horizontal"></div>
                     <div class="card__data">
@@ -79,6 +98,13 @@ function modificarDOM() {
 
     let contenedor = document.querySelector(".container");
     contenedor.appendChild(contenido_card);
+
+    let nacionalidad = document.querySelector(`.nacionalidad${raperos.length}`);
+    nacionalidad.style.backgroundImage = bandera;
+
+    let imgRaperoNuevo = "url(../img/fms.png)";
+    let imagenRapero = document.querySelector(`.imagen${raperos.length}`);
+    imagenRapero.style.backgroundImage = imgRaperoNuevo;
 }
 
 function almacenarDatosJSON() {
@@ -86,64 +112,11 @@ function almacenarDatosJSON() {
     localStorage.setItem("listaRaperos", listaRaperos);
 }
 
-function mostrarRaperos(id, nombre, flow, estilo, ingenio, respuesta, punchline, agresividad) {
-    let contenido_card = document.createElement('div');
-    contenido_card.classList.add(`contenido_card${id}`);
-    contenido_card.innerHTML =
-        `
-        <div class="card">
-                    <div class="nombre">
-                        <label for="" class="nombre">${nombre}</label>
-                    </div>
-                    <div class="card__img">
-    
-                    </div>
-                    <div class="separador-horizontal"></div>
-                    <div class="card__data">
-                        <div class="card__data--left">
-                            <div class="atributos">
-                                <label class="style flow">${flow}</label>
-                                <label>FLO</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style estilo">${estilo}</label>
-                                <label>EST</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style ingenio">${ingenio}</label>
-                                <label>ING</label>
-                            </div>
-                        </div>
-                        <div class="separador-vertical"></div>
-                        <div class="card__data--right">
-                            <div class="atributos">
-                                <label class="style respuesta">${respuesta}</label>
-                                <label>RES</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style punchline">${punchline}</label>
-                                <label>PUN</label>
-                            </div>
-                            <div class="atributos">
-                                <label class="style agresividad">${agresividad}</label>
-                                <label>AGR</label>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="eliminar${id}">
-                    </div>
-        `;
-
-    let contenedor = document.querySelector(".container");
-    contenedor.appendChild(contenido_card);
-}
-
-
 let botonSubmit = document.querySelector("#submit-datos");
 botonSubmit.onclick = () => {
 
     let nombreIngresado = document.querySelector("#nombreIngresado").value;
+    let paisIngresado = document.querySelector("#paisIngresado").value;
     let flowIngresado = Number(document.querySelector("#flowIngresado").value);
     let estiloIngresado = Number(document.querySelector("#estiloIngresado").value);
     let ingenioIngresado = Number(document.querySelector("#ingenioIngresado").value);
@@ -228,7 +201,7 @@ botonSubmit.onclick = () => {
         errorDatos = true;
     }
 
-    rapero = new Rapero(nombreIngresado, flowIngresado, estiloIngresado, ingenioIngresado, respuestaIngresado, punchlineIngresado, agresividadIngresado, promedioIngresado);
+    rapero = new Rapero(nombreIngresado, flowIngresado, estiloIngresado, ingenioIngresado, respuestaIngresado, punchlineIngresado, agresividadIngresado, promedioIngresado, paisIngresado);
 
     if (errorDatos == false) {
         Swal.fire({
@@ -249,17 +222,26 @@ botonSubmit.onclick = () => {
         almacenarDatosJSON();
 
         /* MODIFICACION DOM */
-        modificarDOM();
+        modificarDOM(paisIngresado);
 
     }
 }
 
 let botonMostrar = document.querySelector("#mostrarRaperos");
 botonMostrar.onclick = () => {
-
     if (k == 1) {
         for (let i = 0; i < raperos.length; i++) {
-            mostrarRaperos(i, raperos[i].nombre, raperos[i].flow, raperos[i].estilo, raperos[i].ingenio, raperos[i].respuesta, raperos[i].punchline, raperos[i].agresividad, );
+            mostrarRaperos(
+                i,
+                raperos[i].nombre,
+                raperos[i].flow,
+                raperos[i].estilo,
+                raperos[i].ingenio,
+                raperos[i].respuesta,
+                raperos[i].punchline,
+                raperos[i].agresividad,
+                raperos[i].pais,
+            );
         }
         k = 0;
     }
@@ -281,16 +263,120 @@ botonEliminar.onclick = () => {
 
 let botonMostrarRaperosViejos = document.querySelector("#mostrarRaperosViejos");
 botonMostrarRaperosViejos.onclick = () => {
+    if (mostrado == false) {
+        mostrado = true;
+        botonMostrarRaperosViejos.setAttribute("value", "OCULTAR RAPEROS VIEJOS");
 
-    fetch('../info/raperos.JSON')
-        .then((response) => response.json())
-        .then((api) => {
-            raperos_cargados = api;
-            if (k == 1) {
-                for (let i = 0; i < raperos_cargados.length; i++) {
-                    mostrarRaperos(i, raperos_cargados[i].nombre, raperos_cargados[i].flow, raperos_cargados[i].estilo, raperos_cargados[i].ingenio, raperos_cargados[i].respuesta, raperos_cargados[i].punchline, raperos_cargados[i].agresividad, );
+        let url = "info/raperos.json"
+        fetch(url)
+            .then((response) => response.json())
+            .then((api) => {
+                let pais;
+                raperos_cargados = api;
+
+                if (k == 1) {
+                    for (let i = 0; i < raperos_cargados.length; i++) {
+                        mostrarRaperos(
+                            i,
+                            raperos_cargados[i].nombre,
+                            raperos_cargados[i].flow,
+                            raperos_cargados[i].estilo,
+                            raperos_cargados[i].ingenio,
+                            raperos_cargados[i].respuesta,
+                            raperos_cargados[i].punchline,
+                            raperos_cargados[i].agresividad,
+                            raperos_cargados[i].pais,
+                            raperos_cargados[i].img,
+                        );
+                    }
+                    k = 0;
                 }
-                k = 0;
-            }
-        })
+            })
+    } else {
+        mostrado = false;
+        botonMostrarRaperosViejos.setAttribute("value", "MOSTRAR RAPEROS VIEJOS");
+        for (let i = 0; i < raperos_cargados.length; i++) {
+            let contenido_a_borrar = document.querySelector(`.contenido_card${i}`);
+            contenido_a_borrar.remove();
+        }
+        k = 1;
+    }
+}
+
+function mostrarRaperos(id, nombre, flow, estilo, ingenio, respuesta, punchline, agresividad, pais, img) {
+    if (pais == "arg") {
+        bandera = "url(../img/argentina.png)";
+    } else if (pais == "chi") {
+        bandera = "url(../img/chile.png)";
+    } else if (pais == "col") {
+        bandera = "url(../img/colombia.png)";
+    } else if (pais == "esp") {
+        bandera = "url(../img/espana.png)";
+    } else if (pais == "mex") {
+        bandera = "url(../img/mexico.png)";
+    } else if (pais == "per") {
+        bandera = "url(../img/peru.png)";
+    }
+    let contenido_card = document.createElement('div');
+    contenido_card.classList.add(`contenido_card${id}`);
+    contenido_card.innerHTML =
+        `
+        <div class="card">
+                    <div class="nombre">
+                        <label for="" class="nombre">${nombre}</label>
+                    </div>
+                    <div class="card__info">
+                    <div class="card__img imagen${id}">
+                    </div>
+                    <div class="nacionalidad${id} nacionalidad">
+                    </div>
+                    </div>
+                    <div class="separador-horizontal"></div>
+                    <div class="card__data">
+                        <div class="card__data--left">
+                            <div class="atributos">
+                                <label class="style flow">${flow}</label>
+                                <label>FLO</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style estilo">${estilo}</label>
+                                <label>EST</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style ingenio">${ingenio}</label>
+                                <label>ING</label>
+                            </div>
+                        </div>
+                        <div class="separador-vertical"></div>
+                        <div class="card__data--right">
+                            <div class="atributos">
+                                <label class="style respuesta">${respuesta}</label>
+                                <label>RES</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style punchline">${punchline}</label>
+                                <label>PUN</label>
+                            </div>
+                            <div class="atributos">
+                                <label class="style agresividad">${agresividad}</label>
+                                <label>AGR</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="eliminar${id}">
+                    </div>
+        `;
+
+    let contenedor = document.querySelector(".container");
+    contenedor.appendChild(contenido_card);
+
+    let nacionalidad = document.querySelector(`.nacionalidad${id}`);
+    nacionalidad.style.backgroundImage = bandera;
+
+    let imgRapero = `url("${img}")`;
+    let imagenRapero = document.querySelector(`.imagen${id}`);
+    imagenRapero.style.backgroundImage = imgRapero;
+
+
 }

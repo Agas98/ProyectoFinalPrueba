@@ -13,40 +13,55 @@
 <body>
 
     <section>
-        <input type="button" id="mostrarRaperos" value="MOSTRAR (RAPEROS LOCAL STORAGE)">
-        <input type="button" id="botonEliminar" value="ELIMINAR">
-        <input type="button" id="mostrarRaperosViejos" value="MOSTRAR RAPEROS VIEJOS">
-        <div class="form">
-            <div>
-                <label for="">NOMBRE DEL RAPERO: </label>
-                <input type="text" id="nombreIngresado">
-            </div>
-            <div>
-                <label for="">FLOW (60-100): </label>
-                <input type="text" id="flowIngresado">
-            </div>
-            <div>
-                <label for="">ESTILO (60-100): </label>
-                <input type="text" id="estiloIngresado">
-            </div>
-            <div>
-                <label for="">INGENIO (60-100): </label>
-                <input type="text" id="ingenioIngresado">
-            </div>
-            <div>
-                <label for="">RESPUESTA (60-100): </label>
-                <input type="text" id="respuestaIngresado">
-            </div>
-            <div>
-                <label for="">PUNCHLINE (60-100): </label>
-                <input type="text" id="punchlineIngresado">
-            </div>
-            <div>
-                <label for="">AGRESIVIDAD (60-100): </label>
-                <input type="text" id="agresividadIngresado">
-            </div>
+        <div class="interfaz">
+            <div class="form">
+                <div>
+                    <label for="">NOMBRE DEL RAPERO: </label>
+                    <input type="text" id="nombreIngresado">
+                </div>
+                <div>
+                    <label for="">FLOW (60-100): </label>
+                    <input type="text" id="flowIngresado">
+                </div>
+                <div>
+                    <label for="">ESTILO (60-100): </label>
+                    <input type="text" id="estiloIngresado">
+                </div>
+                <div>
+                    <label for="">INGENIO (60-100): </label>
+                    <input type="text" id="ingenioIngresado">
+                </div>
+                <div>
+                    <label for="">RESPUESTA (60-100): </label>
+                    <input type="text" id="respuestaIngresado">
+                </div>
+                <div>
+                    <label for="">PUNCHLINE (60-100): </label>
+                    <input type="text" id="punchlineIngresado">
+                </div>
+                <div>
+                    <label for="">AGRESIVIDAD (60-100): </label>
+                    <input type="text" id="agresividadIngresado">
+                </div>
+                <div>
+                    <label for="">NACIONALIDAD: </label>
+                    <select id="paisIngresado">
+                        <option value="arg">Argentina</option>
+                        <option value="chi">Chile</option>
+                        <option value="col">Colombia</option>
+                        <option value="esp">España</option>
+                        <option value="mex">Mexico</option>
+                        <option value="per">Peru</option>
+                    </select>
+                </div>
 
-            <input type="button" id="submit-datos" value="Ingresar Datos">
+                <input type="button" id="submit-datos" value="Ingresar Datos">
+            </div>
+            <div class="botonera">
+                <input type="button" id="mostrarRaperos" value="MOSTRAR (RAPEROS LOCAL STORAGE)">
+                <input type="button" id="botonEliminar" value="ELIMINAR">
+                <input type="button" id="mostrarRaperosViejos" value="MOSTRAR RAPEROS VIEJOS">
+            </div>
         </div>
 
         <div class="container">

@@ -20,38 +20,72 @@ section {
     width: 100%;
     height: auto;
 
-    .form {
-        background-color: $fondo;
-        border: 2px solid $borde;
-        border-radius: 30px;
-        width: 650px;
-        font-size: 22px;
-        padding: 20px;
-        height: 400px;
-        color: $texto;
+    .interfaz {
+        margin-top: 10px;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        margin-bottom: 10px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
 
-        input {
-            font-size: 24px;
-            color: #000;
-            font-weight: 600;
+        .botonera {
+            margin-left: 30px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: space-around;
+
+            input {
+                font-weight: bold;
+                font-size: 18px;
+                background-color: $fondo-boton;
+                color: $texto;
+                padding: 6px;
+                border-radius: 15px;
+                transition: all 0.4s ease-out;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $fondo;
+                    color: $texto;
+                }
+            }
         }
 
-        #submit-datos {
-            margin-top: 10px;
-            border-radius: 20px;
-            font-size: 26px;
-            font-weight: 600;
-            background-color: $fondo-boton;
+        .form {
+            background-color: $fondo;
+            border: 2px solid $borde;
+            border-radius: 30px;
+            width: 650px;
+            font-size: 22px;
+            padding: 20px;
+            height: 400px;
             color: $texto;
-            transition: all 0.4s ease-out;
-            &:hover {
-                cursor: pointer;
-                background-color: $fondo;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin-bottom: 10px;
+
+            input {
+                font-size: 24px;
+                color: #000;
+                font-weight: 600;
+            }
+
+            #submit-datos {
+                margin-top: 10px;
+                border-radius: 20px;
+                font-size: 26px;
+                font-weight: 600;
+                background-color: $fondo-boton;
                 color: $texto;
+                transition: all 0.4s ease-out;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $fondo;
+                    color: $texto;
+                }
             }
         }
     }
@@ -96,15 +130,33 @@ section {
             background-color: $fondo;
             margin: 8px;
 
-            .card__img {
+            .card__info {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                height: 39%;
                 width: 100%;
-                height: 45%;
-                background-image: url("../img/fms.png");
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: contain;
-                margin-bottom: 10px;
+
+                .card__img {
+                    width: 100%;
+                    height: 100%;
+                    margin-bottom: 10px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
+                .nacionalidad {
+                    width: 25%;
+                    height: 40%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    margin-right: 10px;
+                }
             }
+
 
             .nombre {
                 width: 100%;

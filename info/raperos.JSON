@@ -1,5 +1,4 @@
-[
-    {
+[{
         "nombre": "ACZINO",
         "flow": 90,
         "estilo": 89,
@@ -8,7 +7,8 @@
         "punchline": 95,
         "agresividad": 92,
         "promedio": 92.5,
-        "img": "../img/aczino.png"
+        "img": "../img/aczino.png",
+        "pais": "mex"
     },
     {
         "nombre": "CHUTY",
@@ -19,7 +19,8 @@
         "punchline": 96,
         "agresividad": 93,
         "promedio": 94,
-        "img": "../img/aczino.png"
+        "img": "../img/chuty.png",
+        "pais": "esp"
     },
     {
         "nombre": "PAPO MC",
@@ -30,7 +31,8 @@
         "punchline": 93,
         "agresividad": 92,
         "promedio": 92.17,
-        "img": "../img/aczino.png"
+        "img": "../img/papo.png",
+        "pais": "arg"
     },
     {
         "nombre": "NEKROOS",
@@ -41,7 +43,8 @@
         "punchline": 93,
         "agresividad": 92,
         "promedio": 90.17,
-        "img": "../img/aczino.png"
+        "img": "../img/nekroos.png",
+        "pais": "per"
     },
     {
         "nombre": "MECHA",
@@ -52,7 +55,8 @@
         "punchline": 96,
         "agresividad": 98,
         "promedio": 94.67,
-        "img": "../img/aczino.png"
+        "img": "../img/mecha.png",
+        "pais": "arg"
     },
     {
         "nombre": "SWEET PAIN",
@@ -63,7 +67,8 @@
         "punchline": 96,
         "agresividad": 96,
         "promedio": 94.83,
-        "img": "../img/aczino.png"
+        "img": "../img/sweetpain.png",
+        "pais": "esp"
     },
     {
         "nombre": "MARITHEA",
@@ -74,7 +79,8 @@
         "punchline": 97,
         "agresividad": 95,
         "promedio": 93.67,
-        "img": "../img/aczino.png"
+        "img": "../img/marithea.png",
+        "pais": "col"
     },
     {
         "nombre": "SKONE",
@@ -85,18 +91,20 @@
         "punchline": 98,
         "agresividad": 97,
         "promedio": 94.33,
-        "img": "../img/aczino.png"
+        "img": "../img/skone.png",
+        "pais": "esp"
     },
     {
-        "nombre": "GAZIR",
-        "flow": 92,
-        "estilo": 95,
-        "ingenio": 99,
-        "respuesta": 99,
-        "punchline": 99,
-        "agresividad": 97,
-        "promedio": 96.83,
-        "img": "../img/aczino.png"
+        "nombre": "VALLES-T",
+        "flow": 88,
+        "estilo": 86,
+        "ingenio": 90,
+        "respuesta": 90,
+        "punchline": 90,
+        "agresividad": 88,
+        "promedio": 88.66,
+        "img": "../img/vallest.png",
+        "pais": "col"
     },
     {
         "nombre": "KATRA",
@@ -107,7 +115,8 @@
         "punchline": 88,
         "agresividad": 88,
         "promedio": 87,
-        "img": "../img/aczino.png"
+        "img": "../img/katra.png",
+        "pais": "arg"
     },
     {
         "nombre": "JOKKER",
@@ -118,7 +127,8 @@
         "punchline": 88,
         "agresividad": 87,
         "promedio": 86.67,
-        "img": "../img/aczino.png"
+        "img": "../img/jokker.png",
+        "pais": "chi"
     },
     {
         "nombre": "WOLF",
@@ -129,7 +139,8 @@
         "punchline": 87,
         "agresividad": 88,
         "promedio": 85.67,
-        "img": "../img/aczino.png"
+        "img": "../img/wolf.png",
+        "pais": "arg"
     },
     {
         "nombre": "DTOKE",
@@ -140,7 +151,8 @@
         "punchline": 98,
         "agresividad": 99,
         "promedio": 93.33,
-        "img": "../img/aczino.png"
+        "img": "../img/dtoke.png",
+        "pais": "arg"
     },
     {
         "nombre": "RAPDER",
@@ -151,6 +163,127 @@
         "punchline": 96,
         "agresividad": 93,
         "promedio": 92.66,
-        "img": "../img/aczino.png"
+        "img": "../img/rapder.png",
+        "pais": "mex"
+    },
+    {
+        "nombre": "KLAN",
+        "flow": 85,
+        "estilo": 84,
+        "ingenio": 88,
+        "respuesta": 90,
+        "punchline": 91,
+        "agresividad": 91,
+        "promedio": 88.16,
+        "img": "../img/klan.png",
+        "pais": "arg"
+    },
+    {
+        "nombre": "RC",
+        "flow": 90,
+        "estilo": 87,
+        "ingenio": 89,
+        "respuesta": 90,
+        "punchline": 90,
+        "agresividad": 89,
+        "promedio": 89.16,
+        "img": "../img/rc.png",
+        "pais": "mex"
+    },
+    {
+        "nombre": "GAZIR",
+        "flow": 86,
+        "estilo": 90,
+        "ingenio": 95,
+        "respuesta": 94,
+        "punchline": 95,
+        "agresividad": 92,
+        "promedio": 92.00,
+        "img": "../img/gazir.png",
+        "pais": "esp"
+    },
+    {
+        "nombre": "LOKILLO",
+        "flow": 85,
+        "estilo": 85,
+        "ingenio": 85,
+        "respuesta": 84,
+        "punchline": 84,
+        "agresividad": 82,
+        "promedio": 84.16,
+        "img": "../img/lokillo.png",
+        "pais": "col"
+    },
+    {
+        "nombre": "SARA SOCAS",
+        "flow": 86,
+        "estilo": 84,
+        "ingenio": 85,
+        "respuesta": 86,
+        "punchline": 86,
+        "agresividad": 85,
+        "promedio": 85.33,
+        "img": "../img/sarasocas.png",
+        "pais": "esp"
+    },
+    {
+        "nombre": "JAZE",
+        "flow": 89,
+        "estilo": 85,
+        "ingenio": 90,
+        "respuesta": 90,
+        "punchline": 90,
+        "agresividad": 88,
+        "promedio": 88.66,
+        "img": "../img/jaze.png",
+        "pais": "per"
+    },
+    {
+        "nombre": "NITRO",
+        "flow": 85,
+        "estilo": 86,
+        "ingenio": 90,
+        "respuesta": 91,
+        "punchline": 91,
+        "agresividad": 91,
+        "promedio": 89.00,
+        "img": "../img/nitro.png",
+        "pais": "chi"
+    },
+    {
+        "nombre": "STIGMA",
+        "flow": 92,
+        "estilo": 88,
+        "ingenio": 87,
+        "respuesta": 86,
+        "punchline": 87,
+        "agresividad": 83,
+        "promedio": 87.16,
+        "img": "../img/stigma.png",
+        "pais": "chi"
+    },
+    {
+        "nombre": "JOTA",
+        "flow": 86,
+        "estilo": 85,
+        "ingenio": 89,
+        "respuesta": 89,
+        "punchline": 89,
+        "agresividad": 87,
+        "promedio": 87.50,
+        "img": "../img/jota.png",
+        "pais": "per"
+    },
+    {
+        "nombre": "TEOREMA",
+        "flow": 89,
+        "estilo": 87,
+        "ingenio": 88,
+        "respuesta": 88,
+        "punchline": 89,
+        "agresividad": 87,
+        "promedio": 88.00,
+        "img": "../img/teorema.png",
+        "pais": "chi"
     }
 ]
