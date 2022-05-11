@@ -1,6 +1,7 @@
 let raperos = [];
 let raperos_cargados = [];
 let raperosJSON = JSON.parse(localStorage.getItem('listaRaperos'));
+
 let k = 1; // VARIABLE PARA NO REPETIR EL "MOSTRAR RAPEROS"
 if (raperosJSON) {
     raperos = raperosJSON;
@@ -10,9 +11,8 @@ if (raperosJSON) {
 const min = 60; // VALORES MINIMOS Y MAXIMOS DE INGRESO DE DATOS
 const max = 100;
 
-let errorDatos, errorFlow, errorIngenio, errorEstilo, errorRespuesta, errorPunchline, errorAgresividad, rapero;
-let bandera;
-let mostrado = false;
+let errorDatos, errorFlow, errorIngenio, errorEstilo, errorRespuesta, errorPunchline, errorAgresividad, rapero, bandera;
+let mostrado, mostrado2, mostradoEliminar = false;
 
 class Rapero {
 
@@ -229,36 +229,64 @@ botonSubmit.onclick = () => {
 
 let botonMostrar = document.querySelector("#mostrarRaperos");
 botonMostrar.onclick = () => {
-    if (k == 1) {
-        for (let i = 0; i < raperos.length; i++) {
-            mostrarRaperos(
-                i,
-                raperos[i].nombre,
-                raperos[i].flow,
-                raperos[i].estilo,
-                raperos[i].ingenio,
-                raperos[i].respuesta,
-                raperos[i].punchline,
-                raperos[i].agresividad,
-                raperos[i].pais,
-            );
+    if (mostrado2 == false) {
+        mostrado2 = true;
+        console.log("sii")
+        botonMostrar.setAttribute("value", "OCULTAR (RAPEROS LOCAL STORAGE)");
+        if (k == 1) {
+            for (let i = 0; i < raperos.length; i++) {
+                mostrarRaperos(
+                    i,
+                    raperos[i].nombre,
+                    raperos[i].flow,
+                    raperos[i].estilo,
+                    raperos[i].ingenio,
+                    raperos[i].respuesta,
+                    raperos[i].punchline,
+                    raperos[i].agresividad,
+                    raperos[i].pais,
+                );
+            }
+            k = 0;
         }
-        k = 0;
+    } else {
+        console.log("entro")
+        mostrado2 = false;
+        botonMostrar.setAttribute("value", "MOSTRAR (RAPEROS LOCAL STORAGE)");
+        for (let i = 0; i < raperos.length; i++) {
+            let contenido_a_borrar2 = document.querySelector(`.contenido_card${i}`);
+            contenido_a_borrar2.remove();
+        }
+        k = 1;
     }
 }
 
+
 let botonEliminar = document.querySelector("#botonEliminar");
 botonEliminar.onclick = () => {
-    if (raperos.length != 0 || raperos_cargados.length != 0) {
-        for (let l = 0; l < raperos.length; l++) {
-            let btnEliminar = document.querySelector(`.eliminar${l}`);
-            btnEliminar.innerHTML = `<input type="button" class="botonEliminar" id="eliminarRapero${l}" value="Eliminar">`
+
+    if (mostradoEliminar == false) {
+        mostradoEliminar = true;
+        botonEliminar.setAttribute("value", "OCULTAR ELIMINAR");
+        if (raperos.length != 0 || raperos_cargados.length != 0) {
+            for (let l = 0; l < raperos.length; l++) {
+                let btnEliminar = document.querySelector(`.eliminar${l}`);
+                btnEliminar.innerHTML = `<input type="button" class="botonEliminar" id="eliminarRapero${l}" value="Eliminar">`
+            }
+            for (let l = 0; l < raperos_cargados.length; l++) {
+                let btnEliminar = document.querySelector(`.eliminar${l}`);
+                btnEliminar.innerHTML = `<input type="button" class="botonEliminar" id="eliminarRapero${l}" value="Eliminar">`
+            }
         }
-        for (let l = 0; l < raperos_cargados.length; l++) {
-            let btnEliminar = document.querySelector(`.eliminar${l}`);
-            btnEliminar.innerHTML = `<input type="button" class="botonEliminar" id="eliminarRapero${l}" value="Eliminar">`
+    } else {
+        mostradoEliminar = false;
+        botonEliminar.setAttribute("value", "ELIMINAR");
+        for (let i = 0; i < raperos_cargados.length; i++) {
+            let contenido_a_borrar3 = document.querySelector(`.eliminar${i}`);
+            contenido_a_borrar3.remove();
         }
     }
+
 }
 
 let botonMostrarRaperosViejos = document.querySelector("#mostrarRaperosViejos");
