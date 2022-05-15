@@ -30,7 +30,6 @@ class Rapero {
 }
 
 function modificarDOM(pais) {
-    console.log(pais);
     if (pais == "arg") {
         bandera = "url(../img/argentina.png)";
     } else if (pais == "chi") {
@@ -231,7 +230,6 @@ let botonMostrar = document.querySelector("#mostrarRaperos");
 botonMostrar.onclick = () => {
     if (mostrado2 == false) {
         mostrado2 = true;
-        console.log("sii")
         botonMostrar.setAttribute("value", "OCULTAR (RAPEROS LOCAL STORAGE)");
         if (k == 1) {
             for (let i = 0; i < raperos.length; i++) {
@@ -250,7 +248,6 @@ botonMostrar.onclick = () => {
             k = 0;
         }
     } else {
-        console.log("entro")
         mostrado2 = false;
         botonMostrar.setAttribute("value", "MOSTRAR (RAPEROS LOCAL STORAGE)");
         for (let i = 0; i < raperos.length; i++) {
